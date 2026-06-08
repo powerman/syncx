@@ -57,7 +57,7 @@ func ExampleTryWaitGroup_basic() {
 //
 // Without TryWaitGroup, calling wg.Add inside a method while another
 // goroutine calls wg.Wait would be a data race. TryAdd makes this safe.
-func ExampleTryWaitGroup_graceful_shutdown() {
+func ExampleTryWaitGroup_gracefulShutdown() {
 	var wg sync.WaitGroup
 	twg := syncx.NewTryWaitGroup(&wg)
 
