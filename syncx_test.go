@@ -10,14 +10,14 @@ import (
 
 func TestNewTryWaitGroup_nil_panics(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	t.Panic(func() { syncx.NewTryWaitGroup(nil) })
 }
 
 func TestTryWaitGroup_TryGo_nil_panics(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	wg := syncx.NewWaitGroup()
 	t.Panic(func() { wg.TryGo(nil) })
@@ -25,7 +25,7 @@ func TestTryWaitGroup_TryGo_nil_panics(tt *testing.T) {
 
 func TestWaitGroup_Add_panics_after_wait(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	wg := syncx.NewWaitGroup()
 	wg.Wait()
@@ -34,7 +34,7 @@ func TestWaitGroup_Add_panics_after_wait(tt *testing.T) {
 
 func TestWaitGroup_Add_works_before_wait(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	wg := syncx.NewWaitGroup()
 	started := make(chan struct{})
@@ -53,7 +53,7 @@ func TestWaitGroup_Add_works_before_wait(tt *testing.T) {
 
 func TestWaitGroup_TryGo_before_wait(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	wg := syncx.NewWaitGroup()
 	ran := make(chan struct{})
@@ -65,7 +65,7 @@ func TestWaitGroup_TryGo_before_wait(tt *testing.T) {
 
 func TestWaitGroup_TryGo_after_wait(tt *testing.T) {
 	tt.Parallel()
-	t := check.T(tt)
+	t := check.Must(tt)
 
 	wg := syncx.NewWaitGroup()
 	wg.Wait()
